@@ -1,11 +1,11 @@
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 export const generatePlan = async (userData) => {
-    if (!OPENAI_API_KEY) {
-        throw new Error('OpenAI API key is missing. Please check your .env.local file.');
-    }
+  if (!OPENAI_API_KEY) {
+    throw new Error('OpenAI API key is missing. Please check your .env.local file.');
+  }
 
-    const systemPrompt = `You are a world-class certified personal trainer and nutritionist. 
+  const systemPrompt = `You are a world-class certified personal trainer and nutritionist. 
 Your job is to generate a highly personalized, detailed, and realistic workout and nutrition plan.
 Return ONLY a valid JSON object matching the requested schema. Do not include markdown formatting or extra text.
 
@@ -56,33 +56,76 @@ You MUST use EXACTLY the following JSON schema format:
   }
 }`;
 
-    try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                model: 'gpt-4o-mini',
-                messages: [
-                    { role: 'system', content: systemPrompt },
-                    { role: 'user', content: 'Generate my personalized plan based on my profile.' }
-                ],
-                temperature: 0.7,
-                response_format: { type: "json_object" }
-            })
-        });
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: 'Generate my personalized plan based on my profile.' }
+        ],
+        temperature: 0.7,
+        response_format: { type: "json_object" }
+      })
+    });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error?.message || 'Failed to generate plan');
-        }
-
-        const data = await response.json();
-        return JSON.parse(data.choices[0].message.content);
-    } catch (error) {
-        console.error('Error in generatePlan:', error);
-        throw error;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error?.message || 'Failed to generate plan');
     }
+
+    const data = await response.json();
+    return JSON.parse(data.choices[0].message.content);
+  } catch (error) {
+    console.error('Error in generatePlan:', error);
+    throw error;
+  }
+};
+
+export const generateMealIdeas = async (macros) => {
+  if (!OPENAI_API_KEY) {
+    throw new Error('OpenAI API key is missing.');
+  }
+
+  const prompt = `You are an expert sports nutritionist. Generate 4 meal ideas for a person with these daily macros:
+- Calories: ${macros.cal} kcal
+- Protein: ${macros.protein}g
+- Carbs: ${macros.carbs}g
+- Fats: ${macros.fats}g
+
+Return ONLY valid JSON with this format:
+[
+  { "name": "Meal Name (e.g. Breakfast)", "description": "Brief description of the meal with ingredients", "calories": 500, "protein": "40g", "carbs": "50g", "fats": "15g" }
+]`;
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${OPENAI_API_KEY}`
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: prompt },
+        { role: 'user', content: 'Generate my meals.' }
+      ],
+      temperature: 0.7,
+      response_format: { type: "json_object" }
+    })
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error?.message || 'Failed to generate meals');
+  }
+
+  const data = await response.json();
+  const parsed = JSON.parse(data.choices[0].message.content);
+  return Array.isArray(parsed) ? parsed : parsed.meals || parsed.meal_ideas || Object.values(parsed)[0];
 };

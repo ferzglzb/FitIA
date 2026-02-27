@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, Brain, Target, Flame, Activity, Scale, Plus, Minus, CheckCircle2, Zap } from 'lucide-react';
+import Navbar from './Navbar';
 
-const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
+const Questionnaire = ({ onSubmit, isLoading }) => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         age: 25,
         gender: 'male',
@@ -36,24 +39,9 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
 
     return (
         <div className="min-h-screen bg-background-light">
-            {/* Header */}
-            <header className="flex items-center justify-between border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 px-10 py-4">
-                <div className="flex items-center gap-3">
-                    <div className="size-8 bg-navy-deep rounded-lg flex items-center justify-center">
-                        <Zap size={16} className="text-white" fill="white" />
-                    </div>
-                    <span className="text-xl font-bold text-navy-deep">FitPremium</span>
-                </div>
-                <button
-                    onClick={onBack}
-                    className="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-navy-deep transition-colors">
-                    <ArrowLeft size={16} /> Back to Home
-                </button>
-            </header>
-
-            <main className="flex justify-center py-12 px-6">
+            <Navbar />
+            <main className="flex justify-center py-12 px-6 pt-28">
                 <div className="max-w-[800px] w-full flex flex-col items-center">
-                    {/* Progress Bar */}
                     <div className="w-full max-w-md flex flex-col gap-3 mb-12">
                         <div className="flex justify-between items-end">
                             <span className="text-slate-500 text-xs font-bold uppercase tracking-widest">Profile Setup</span>
@@ -70,8 +58,6 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
                     </div>
 
                     <form onSubmit={handleSubmit} className="w-full space-y-12">
-
-                        {/* Metric Spinners */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
                                 { field: 'age', label: 'Age', unit: 'yrs', min: 14, max: 100 },
@@ -98,7 +84,6 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
                             ))}
                         </div>
 
-                        {/* Gender Toggle */}
                         <div className="flex flex-col items-center gap-3">
                             <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Gender</span>
                             <div className="bg-slate-100 p-1 rounded-full flex gap-1">
@@ -113,23 +98,15 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
 
                         <hr className="border-slate-200" />
 
-                        {/* Goal Cards */}
                         <div>
                             <h4 className="text-center text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-6">Primary Goal</h4>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 {goals.map(({ key, label, icon, desc }) => (
-                                    <button
-                                        key={key}
-                                        type="button"
-                                        onClick={() => setFormData(p => ({ ...p, goal: key }))}
+                                    <button key={key} type="button" onClick={() => setFormData(p => ({ ...p, goal: key }))}
                                         className={`relative p-6 rounded-2xl cursor-pointer transition-all text-left ${formData.goal === key ? 'bg-white border-2 border-navy-deep shadow-xl shadow-navy-deep/10' : 'bg-white border border-slate-200 hover:border-navy-deep/50 shadow-sm'}`}>
-                                        {formData.goal === key && (
-                                            <CheckCircle2 size={18} className="absolute top-3 right-3 text-crimson-athletic fill-crimson-athletic" />
-                                        )}
+                                        {formData.goal === key && <CheckCircle2 size={18} className="absolute top-3 right-3 text-crimson-athletic fill-crimson-athletic" />}
                                         <div className="flex flex-col items-center text-center gap-3">
-                                            <div className="size-12 rounded-full bg-slate-50 flex items-center justify-center text-navy-deep border border-slate-100">
-                                                {icon}
-                                            </div>
+                                            <div className="size-12 rounded-full bg-slate-50 flex items-center justify-center text-navy-deep border border-slate-100">{icon}</div>
                                             <span className="text-base font-bold text-slate-900">{label}</span>
                                             <p className="text-xs text-slate-500 leading-snug">{desc}</p>
                                         </div>
@@ -138,12 +115,11 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
                             </div>
                         </div>
 
-                        {/* Selects Row */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="flex flex-col gap-2">
                                 <label className="text-slate-500 text-xs font-bold uppercase tracking-wider">Activity Level</label>
                                 <select name="activityLevel" value={formData.activityLevel} onChange={handleChange}
-                                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep shadow-sm transition-all">
+                                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep shadow-sm">
                                     <option value="sedentary">Sedentary (Little/no exercise)</option>
                                     <option value="light">Light (1-3 days/week)</option>
                                     <option value="moderate">Moderate (3-5 days/week)</option>
@@ -154,7 +130,7 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
                             <div className="flex flex-col gap-2">
                                 <label className="text-slate-500 text-xs font-bold uppercase tracking-wider">Workout Days/Week</label>
                                 <select name="daysPerWeek" value={formData.daysPerWeek} onChange={handleChange}
-                                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep shadow-sm transition-all">
+                                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep shadow-sm">
                                     <option value="2">2 Days</option>
                                     <option value="3">3 Days</option>
                                     <option value="4">4 Days</option>
@@ -167,27 +143,19 @@ const Questionnaire = ({ onSubmit, onBack, isLoading }) => {
                         <div className="flex flex-col gap-2">
                             <label className="text-slate-500 text-xs font-bold uppercase tracking-wider">Dietary Restrictions <span className="font-normal normal-case">(Optional)</span></label>
                             <input type="text" name="dietaryRestrictions" value={formData.dietaryRestrictions} onChange={handleChange}
-                                placeholder="e.g. Vegan, Keto, Lactose Intolerant, No Nuts..."
-                                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep shadow-sm transition-all" />
+                                placeholder="e.g. Vegan, Keto, Lactose Intolerant..."
+                                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-navy-deep focus:ring-1 focus:ring-navy-deep shadow-sm" />
                         </div>
 
-                        {/* Navigation Footer  */}
                         <div className="w-full flex justify-between items-center pt-8 border-t border-slate-200">
-                            <button type="button" onClick={onBack}
+                            <button type="button" onClick={() => navigate(-1)}
                                 className="flex items-center gap-2 px-6 py-3 rounded-full text-slate-500 font-semibold hover:text-navy-deep transition-colors">
                                 <ArrowLeft size={18} /> Back
                             </button>
                             <button type="submit" disabled={isLoading}
                                 className="bg-gradient-to-r from-navy-deep to-crimson-athletic text-white font-bold px-10 py-4 rounded-full shadow-lg shadow-navy-deep/20 hover:shadow-navy-deep/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
-                                {isLoading ? (
-                                    <>
-                                        <Brain className="animate-pulse" size={20} /> Generating Plan...
-                                    </>
-                                ) : (
-                                    <>
-                                        Create AI Plan <ArrowRight size={20} />
-                                    </>
-                                )}
+                                {isLoading ? <><Brain className="animate-pulse" size={20} /> Generating Plan...</> :
+                                    <>Create AI Plan <ArrowRight size={20} /></>}
                             </button>
                         </div>
                     </form>
