@@ -1,0 +1,174 @@
+<html lang="en"><head></head><body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">``` Krank
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "navy": "#0A192F",
+                        "crimson": "#DC143C",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#050B14",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --navy-deep: #0A192F;
+            --crimson-athletic: #DC143C;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .sporty-gradient {
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--crimson-athletic) 100%);
+        }
+    </style>
+
+
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<div class="size-8 bg-navy rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">bolt</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">ProFit</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-crimson transition-colors" href="#">Support</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-crimson transition-colors" href="#">Exit</a>
+</div>
+<div class="bg-slate-200 dark:bg-slate-800 rounded-full size-10 overflow-hidden border border-slate-200 dark:border-slate-700">
+<img class="w-full h-full object-cover" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOXrIkES6b5BcL3D0I5N-ojAifX52n1i3_5fAE9oKoMAn7uSwHFmZlg4TwN9XdMg0looiJJZurw5agniemoXpqmwYAEuoxF7RQE4NVkA-jiCPl_SXP1Wt8PoQXMln5U9qz-vohHDVW5zK0cd28u_YREx6tQRE0KIzQkVhVSyEx0LUq-IXGD8-i9f6_6Gl4hwMVYHfYAA6BrI4_WFpuxCTN8UVaZqpte9McyB5kRVCWgdznD1anTp9L5qmFtdPuUoopDgnSQHy4ewEX"/>
+</div>
+</div>
+</header>
+<main class="flex-1 flex justify-center py-12 px-6">
+<div class="max-w-[800px] w-full flex flex-col items-center">
+<div class="w-full max-w-md flex flex-col gap-4 mb-12">
+<div class="flex justify-between items-end">
+<span class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest">Profile Setup</span>
+<span class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Step 2 of 4</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full sporty-gradient rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+<div class="text-center mb-16">
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-bold tracking-tight mb-4">Tailor your journey</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg">Personalized metrics for professional results.</p>
+</div>
+<div class="w-full space-y-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center gap-6">
+<span class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-widest">Age</span>
+<div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-full flex">
+<button class="px-6 py-2 rounded-full text-sm font-bold transition-all bg-navy text-white shadow-lg">20s</button>
+<button class="px-6 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-all">30s</button>
+<button class="px-6 py-2 rounded-full text-sm font-medium text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-all">40s+</button>
+</div>
+</div>
+<div class="flex flex-col items-center gap-6">
+<span class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-widest">Weight</span>
+<div class="flex items-center gap-4">
+<button class="size-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-900 dark:text-white hover:border-navy transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="text-center px-4">
+<span class="text-3xl font-bold text-slate-900 dark:text-white">74</span>
+<span class="text-slate-400 dark:text-slate-500 font-medium ml-1">kg</span>
+</div>
+<button class="size-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-900 dark:text-white hover:border-navy transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col items-center gap-6">
+<span class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-widest">Height</span>
+<div class="flex bg-slate-100 dark:bg-slate-800 rounded-full p-1">
+<button class="px-5 py-2 rounded-full text-xs font-bold bg-navy text-white shadow-sm">CM</button>
+<button class="px-5 py-2 rounded-full text-xs font-bold text-slate-400">FT</button>
+</div>
+<div class="text-center">
+<span class="text-3xl font-bold text-slate-900 dark:text-white tracking-tighter">182</span>
+</div>
+</div>
+</div>
+<div class="w-full">
+<h4 class="text-center text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-8">What is your primary goal?</h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="group relative bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none cursor-pointer hover:border-navy transition-all overflow-hidden">
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="size-14 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center mb-6 text-navy dark:text-slate-300">
+<span class="material-symbols-outlined text-3xl">fitness_center</span>
+</div>
+<h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Build Muscle</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Increase strength and hypertrophy with optimized protein.</p>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-900 p-8 rounded-xl border-2 border-navy shadow-xl shadow-navy/10 cursor-pointer overflow-hidden">
+<div class="absolute top-4 right-4 text-crimson">
+<span class="material-symbols-outlined fill-1">check_circle</span>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="size-14 rounded-full bg-navy/5 flex items-center justify-center mb-6 text-navy">
+<span class="material-symbols-outlined text-3xl">local_fire_department</span>
+</div>
+<h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Fat Loss</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Shed excess weight while maintaining lean muscle tissue.</p>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none cursor-pointer hover:border-navy transition-all overflow-hidden">
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="size-14 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center mb-6 text-navy dark:text-slate-300">
+<span class="material-symbols-outlined text-3xl">balance</span>
+</div>
+<h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">Maintenance</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Stabilize weight and focus on overall metabolic health.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full flex justify-between items-center mt-20 pt-10 border-t border-slate-200 dark:border-slate-800">
+<button class="flex items-center gap-2 px-8 py-4 rounded-full text-slate-500 dark:text-slate-400 font-semibold hover:text-navy dark:hover:text-white transition-colors group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                            Back
+                        </button>
+<button class="sporty-gradient text-white font-bold px-12 py-4 rounded-full shadow-lg shadow-navy/20 hover:shadow-navy/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+                            Next step
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="py-8 text-center">
+<p class="text-slate-400 dark:text-slate-500 text-xs">© 2024 ProFit Nutrition. Professional grade performance data.</p>
+</footer>
+</div>
+</div>
+
+</body></html>

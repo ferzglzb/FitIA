@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0A192F;
+  --color-crimson: #DC143C;
+  --color-background-light: #F8F9FA;
+  --color-background-dark: #020617;
+  --color-neutral-soft: #F1F5F9;
+  --color-navy-deep: #0A192F;
+  --color-crimson-athletic: #DC143C;
+  --color-slate-pro: #64748B;
+  --color-surface: #ffffff;
+  --font-display: "Inter", "sans-serif";
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-background-light);
+  }
+}
+
+.glass-nav {
+  background: rgba(248, 249, 250, 0.8);
+  backdrop-filter: blur(16px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0A192F 0%, #DC143C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #0A192F 0%, #DC143C 100%);
+}
+
+.sporty-gradient {
+  background: linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-crimson-athletic) 100%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.activity-ring {
+  transform: rotate(-90deg);
+}
+
+.activity-ring circle {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}

@@ -1,0 +1,265 @@
+<html lang="en"><head></head><body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">```html
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "navy-deep": "#0A192F",
+                        "crimson-athletic": "#DC143C",
+                        "slate-pro": "#64748B",
+                        "primary": "#0A192F", // Mapping primary to Deep Navy for consistency
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#020617",
+                        "surface": "#ffffff",
+                        "neutral-soft": "#F1F5F9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "1.25rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .activity-ring {
+                transform: rotate(-90deg);
+            }
+            .activity-ring circle {
+                fill: none;
+                stroke-linecap: round;
+                transition: stroke-dashoffset 0.5s ease;
+            }
+        }
+        :root {
+            --navy-deep: #0A192F;
+            --crimson-athletic: #DC143C;
+            --slate-pro: #64748B;
+        }
+    </style>
+
+
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-surface/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50 px-6 lg:px-20 py-4">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3 text-slate-900 dark:text-slate-100">
+<div class="bg-navy-deep p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl font-bold">bolt</span>
+</div>
+<h2 class="text-xl font-extrabold tracking-tight">FitPremium</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-navy-deep dark:text-slate-100 hover:text-crimson-athletic transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-navy-deep transition-colors" href="#">Workouts</a>
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-navy-deep transition-colors" href="#">Nutrition</a>
+<a class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-navy-deep transition-colors" href="#">Community</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-neutral-soft dark:bg-slate-800/50">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl bg-transparent border-none focus:ring-0 text-sm placeholder:text-slate-400" placeholder="Search data..."/>
+</div>
+</label>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-xl size-10 bg-neutral-soft dark:bg-slate-800/50 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="size-10 rounded-full border-2 border-navy-deep/20 p-0.5">
+<img class="w-full h-full object-cover rounded-full" data-alt="User profile avatar smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_ylCrHe5wfa97xgjGYjIp80NajXw0stGsDWLzbDQcWH8Qd2INGVsrHrkdM9x-W51CfRNtHvER_3rTyzr3P-u1T2MdOqZrBDxEKG3QmDzOAu_1nxJwKDjFKLzaDwcxuJ8pK1B3q9rWGZ6DAxpViMy-jbWq6kdHIfmiwO_BVZ7TfRR4nuIzUJqjIsD57tWYd6x-hnvr3PxofNbgdF4zfVr-Mzfox36kk3KaQNUApt6z-fF9ahatj5JqsiOz7rz3WSRWj1dsbokysJDW"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto w-full px-6 py-10 space-y-12">
+<section>
+<div class="mb-8">
+<h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-slate-100 uppercase italic">Performance Hub</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2 font-medium">Tracking your macro-nutrient distribution with professional accuracy</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center bg-surface dark:bg-slate-900/40 p-10 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex justify-center lg:justify-start relative size-64 mx-auto lg:mx-0">
+<svg class="activity-ring absolute inset-0 size-full" viewBox="0 0 100 100">
+<circle class="text-navy-deep/10" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-navy-deep" cx="50" cy="50" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="50.24" stroke-width="8"></circle>
+</svg>
+<svg class="activity-ring absolute inset-0 size-full scale-75" viewBox="0 0 100 100">
+<circle class="text-crimson-athletic/10" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="10.6"></circle>
+<circle class="text-crimson-athletic" cx="50" cy="50" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="75.36" stroke-width="10.6"></circle>
+</svg>
+<svg class="activity-ring absolute inset-0 size-full scale-[0.5]" viewBox="0 0 100 100">
+<circle class="text-slate-pro/10" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="16"></circle>
+<circle class="text-slate-pro" cx="50" cy="50" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="100.48" stroke-width="16"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-navy-deep dark:text-slate-200">monitoring</span>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-6 rounded-2xl bg-navy-deep/5 dark:bg-navy-deep/20 border border-navy-deep/10">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-bold uppercase tracking-wider text-navy-deep dark:text-slate-300">Proteins</span>
+<span class="material-symbols-outlined text-navy-deep text-xl">egg</span>
+</div>
+<div class="space-y-1">
+<p class="text-2xl font-black text-slate-900 dark:text-slate-100">120g <span class="text-sm font-normal text-slate-400">/ 150g</span></p>
+<div class="h-1.5 w-full bg-navy-deep/20 rounded-full overflow-hidden">
+<div class="h-full bg-navy-deep w-[80%] rounded-full"></div>
+</div>
+<p class="text-xs font-bold text-navy-deep pt-1 text-right">80%</p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-crimson-athletic/5 dark:bg-crimson-athletic/20 border border-crimson-athletic/10">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-bold uppercase tracking-wider text-crimson-athletic">Carbs</span>
+<span class="material-symbols-outlined text-crimson-athletic text-xl">bakery_dining</span>
+</div>
+<div class="space-y-1">
+<p class="text-2xl font-black text-slate-900 dark:text-slate-100">175g <span class="text-sm font-normal text-slate-400">/ 250g</span></p>
+<div class="h-1.5 w-full bg-crimson-athletic/20 rounded-full overflow-hidden">
+<div class="h-full bg-crimson-athletic w-[70%] rounded-full"></div>
+</div>
+<p class="text-xs font-bold text-crimson-athletic pt-1 text-right">70%</p>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-slate-pro/5 dark:bg-slate-pro/20 border border-slate-pro/10">
+<div class="flex items-center justify-between mb-4">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-pro">Fats</span>
+<span class="material-symbols-outlined text-slate-pro text-xl">opacity</span>
+</div>
+<div class="space-y-1">
+<p class="text-2xl font-black text-slate-900 dark:text-slate-100">42g <span class="text-sm font-normal text-slate-400">/ 70g</span></p>
+<div class="h-1.5 w-full bg-slate-pro/20 rounded-full overflow-hidden">
+<div class="h-full bg-slate-pro w-[60%] rounded-full"></div>
+</div>
+<p class="text-xs font-bold text-slate-pro pt-1 text-right">60%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Training Regimen</h2>
+<div class="flex gap-2">
+<button class="size-10 flex items-center justify-center rounded-full bg-neutral-soft dark:bg-slate-800 text-slate-400 hover:text-crimson-athletic transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-full bg-neutral-soft dark:bg-slate-800 text-slate-400 hover:text-crimson-athletic transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-bold text-slate-400 text-sm uppercase tracking-widest">Monday • Push</h3>
+<span class="text-xs font-bold px-3 py-1 bg-crimson-athletic text-white rounded-full uppercase tracking-tighter">Active</span>
+</div>
+<div class="space-y-3">
+<div class="p-5 bg-neutral-soft dark:bg-slate-800/40 rounded-2xl flex items-center justify-between shadow-sm transition-all hover:translate-y-[-2px] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-surface dark:bg-slate-900 flex items-center justify-center text-navy-deep shadow-sm">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Bench Press</p>
+<p class="text-xs text-slate-500">Chest &amp; Triceps</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-black text-slate-900 dark:text-slate-100">4 <span class="text-sm font-medium text-slate-400">×</span> 10</p>
+</div>
+</div>
+<div class="p-5 bg-neutral-soft dark:bg-slate-800/40 rounded-2xl flex items-center justify-between shadow-sm transition-all hover:translate-y-[-2px] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-surface dark:bg-slate-900 flex items-center justify-center text-navy-deep shadow-sm">
+<span class="material-symbols-outlined">exercise</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Overhead Press</p>
+<p class="text-xs text-slate-500">Shoulders</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-black text-slate-900 dark:text-slate-100">3 <span class="text-sm font-medium text-slate-400">×</span> 12</p>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-bold text-slate-400 text-sm uppercase tracking-widest">Wednesday • Pull</h3>
+<span class="text-xs font-bold px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-500 rounded-full uppercase tracking-tighter">Scheduled</span>
+</div>
+<div class="space-y-3">
+<div class="p-5 bg-neutral-soft dark:bg-slate-800/40 rounded-2xl flex items-center justify-between shadow-sm transition-all hover:translate-y-[-2px] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-surface dark:bg-slate-900 flex items-center justify-center text-navy-deep shadow-sm">
+<span class="material-symbols-outlined">format_list_bulleted</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Deadlifts</p>
+<p class="text-xs text-slate-500">Posterior Chain</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-black text-slate-900 dark:text-slate-100">5 <span class="text-sm font-medium text-slate-400">×</span> 5</p>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-bold text-slate-400 text-sm uppercase tracking-widest">Friday • Legs</h3>
+<span class="text-xs font-bold px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-500 rounded-full uppercase tracking-tighter">Scheduled</span>
+</div>
+<div class="space-y-3">
+<div class="p-5 bg-neutral-soft dark:bg-slate-800/40 rounded-2xl flex items-center justify-between shadow-sm transition-all hover:translate-y-[-2px] cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-surface dark:bg-slate-900 flex items-center justify-center text-navy-deep shadow-sm">
+<span class="material-symbols-outlined">accessibility_new</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Squats</p>
+<p class="text-xs text-slate-500">Quads &amp; Glutes</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-xl font-black text-slate-900 dark:text-slate-100">4 <span class="text-sm font-medium text-slate-400">×</span> 8</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-10 right-10 flex gap-4">
+<button class="group flex items-center gap-3 bg-navy-deep text-white font-black px-8 py-5 rounded-2xl shadow-2xl shadow-navy-deep/40 hover:bg-crimson-athletic transition-all duration-300">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
+                LOG ACTIVITY
+            </button>
+</div>
+</div>
+</div>
+
+</body></html>
